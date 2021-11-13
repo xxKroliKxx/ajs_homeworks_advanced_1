@@ -1,13 +1,11 @@
 export default function CharacteristicsSort(obj, order) {
   const newObj = [];
-  const entries = Object.entries(obj);
-  /* eslint-disable guard-for-in */
-  for (const index in entries) {
-    const key = entries[index][0];
-    const value = entries[index][1];
-    newObj.push({ key, value });
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+      newObj.push({ key, value });
+    }
   }
-  /* eslint-enable */
   const f = (a, b) => {
     const indexA = order.indexOf(a.key);
     const indexB = order.indexOf(b.key);
